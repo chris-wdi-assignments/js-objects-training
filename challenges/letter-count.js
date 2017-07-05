@@ -12,7 +12,6 @@
     "e": 1
   }
   ```
-
   Bonuses
   - Make sure that lower case letters and upper case letters count for the same character.
   - Ignore spaces, special characters, and punctuation.
@@ -31,3 +30,24 @@
 */
 
 // YOUR CODE HERE
+
+const letterCount = function (string) {
+  string = string.toLowerCase();
+  let letterFrequencies = {};
+  let characters = string.split('').filter(function (character) {
+    return /[a-zA-Z]/.test(character)
+    // i know we didn't learn regex, but not sure how else to do
+  });
+  characters.forEach(function (character) {
+    if (letterFrequencies[character]) {
+      console.log('beep');
+      letterFrequencies[character] = letterFrequencies[character] + 1 / characters.length;  //increment count
+    } else {
+      letterFrequencies[character] = 1 / characters.length;
+    }
+  });
+  
+  return letterFrequencies;
+};
+
+console.log(letterCount('apple'));
