@@ -40,7 +40,6 @@ const letterCount = function (string) {
   });
   characters.forEach(function (character) {
     if (letterFrequencies[character]) {
-      console.log('beep');
       letterFrequencies[character] = letterFrequencies[character] + 1 / characters.length;  //increment count
     } else {
       letterFrequencies[character] = 1 / characters.length;

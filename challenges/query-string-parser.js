@@ -45,3 +45,27 @@
 */
 
 // YOUR CODE HERE
+
+const parseQueryString = function (string) {
+  let obj = {};
+  string.split('&').forEach(function (query) {
+    let keyValue = query.split('=');
+    obj[keyValue[0]] = keyValue[1];
+  });
+  return obj;
+};
+
+const createQueryString = function (obj) {
+  let string = '';
+  for (let i in obj) {
+    if (string.length > 0) string += '&';
+    string += `${i}=${obj[i]}`;
+  }
+  return string;
+};
+
+let queryObj = parseQueryString("a=apple&b=beet&b=blueberry&c=&d=10");
+console.log(queryObj);
+
+let queryString = createQueryString(queryObj);
+console.log(queryString);

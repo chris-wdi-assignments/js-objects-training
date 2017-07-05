@@ -38,3 +38,48 @@
 */
 
 // YOUR CODE HERE
+
+const findBall = function (table) {
+  let i = 0;
+  while (!table[i]) {
+    i++;
+  }
+  return i;
+}
+
+const pingPong = function (table) {
+  // first gather information on initial state of ball, table
+  let size = table.length;
+  let initialIndex = findBall(table), newIndex = null;
+  let ball = table[initialIndex];  // this is a reference
+  // now calculate next position of ball
+  ball.steps = ball.steps + 1;
+  let bounces = Math.floor(ball.steps / (size - 1));  // if even we're moving R
+  let direction;  // positive is right, negative is left
+  if (bounces % 2 === 0) direction = 1;
+  else direction = -1;
+  let distanceFromWall = ball.steps % (size - 1);
+  if (direction > 0) {  // moving right, away from left wall
+    newIndex = 0 + distanceFromWall;
+  } else {  // moving left, away from right wall
+    newIndex = (size - 1) - distanceFromWall;
+  }
+  // now move the ball
+  table[initialIndex] = null;
+  table[newIndex] = ball;
+  console.log(`steps: ${ball.steps}, bounces: ${bounces}, direction: ${direction}, distance from wall: ${distanceFromWall}`);
+  // return table state
+  return table;
+};
+
+let table = [{steps: 0}, null, null, null];
+
+pingPong(table);
+pingPong(table);
+console.log(table);
+/*
+ * This will print out movement in node
+setInterval(function () {
+  console.log(pingPong(table));
+}, 1250)
+ */
