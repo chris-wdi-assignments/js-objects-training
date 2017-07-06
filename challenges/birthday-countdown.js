@@ -37,7 +37,7 @@
 
 const now = new Date().valueOf();
 
-const getNextBirthday = function (string) {
+const getNextBirthday = function (string) { // input is dob e.g. 01/26/1986
   let arr = string.split('/');
   arr[2] = new Date().getFullYear(); // change year to this year
   let nextBirthday = arr.join('/');
