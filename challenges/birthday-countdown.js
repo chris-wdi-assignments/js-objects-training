@@ -54,7 +54,7 @@ const daysUntilDate = function (string) {
   let minutes = seconds / 60;
   let hours = minutes / 60;
   let days = hours / 24;
-  return Math.floor(days);
+  return Math.ceil(days);
 };
 
 const birthdayReminder = function (arr) {
